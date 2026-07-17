@@ -1,0 +1,109 @@
+.mission-section {
+  padding-bottom: 100px;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.mission-quote {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.5;
+  max-width: 34ch;
+}
+
+.mission-attribution {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 32px 0 40px;
+  font-size: 0.9rem;
+}
+.mission-attribution .mono {
+  color: var(--color-text-faint);
+  font-size: 0.75rem;
+}
+
+.mission-body {
+  color: var(--color-text-dim);
+  max-width: 46ch;
+}
+
+.mission-figure {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+.mission-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mission-caption {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  font-size: 0.68rem;
+  color: var(--color-text-dim);
+}
+
+.stat-plus {
+  font-size: 0.6em;
+}
+
+.team-title {
+  margin: 16px 0 48px;
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+}
+
+.team-list {
+  border-top: 1px solid var(--color-border);
+}
+.team-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1.05rem;
+}
+.team-list .mono {
+  color: var(--color-text-dim);
+  font-size: 0.85rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.contact-list div {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.contact-list dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-faint);
+  margin-bottom: 6px;
+}
+.contact-list dd {
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .mission-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-list li {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

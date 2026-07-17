@@ -1,0 +1,156 @@
+.visit-section {
+  padding: 170px 0 120px;
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.visit-sidebar {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.visit-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.visit-nav-link {
+  font-size: 0.98rem;
+  color: var(--color-text-faint);
+  transition: color 0.2s var(--ease);
+  position: relative;
+}
+.visit-nav-link:hover {
+  color: var(--color-text-dim);
+}
+.visit-nav-link.is-current {
+  color: var(--color-text);
+}
+.visit-nav-link.is-current::before {
+  content: "•";
+  position: absolute;
+  left: -16px;
+}
+
+.visit-page-count {
+  color: var(--color-text-faint);
+  font-size: 0.75rem;
+}
+
+.visit-title {
+  font-size: clamp(3.2rem, 7vw, 5.2rem);
+  margin-bottom: 56px;
+}
+
+.visit-figure {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.visit-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- label / value row list, used by hours / tickets / transport / group ---- */
+
+.info-group {
+  margin-bottom: 48px;
+}
+.info-group .eyebrow {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.info-rows {
+  border-top: 1px solid var(--color-border);
+}
+.info-row {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.info-row .info-label {
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+}
+.info-row .info-value {
+  font-size: 1.05rem;
+}
+.info-row .info-note {
+  color: var(--color-text-faint);
+  font-size: 0.78rem;
+  display: block;
+  margin-top: 4px;
+}
+.info-row .info-price {
+  font-size: 1.1rem;
+  text-align: right;
+  white-space: nowrap;
+}
+.info-row .info-flag {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+
+/* ---- accessibility numbered list ---- */
+
+.a11y-list {
+  border-top: 1px solid var(--color-border);
+}
+.a11y-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: baseline;
+}
+.a11y-item .mono {
+  color: var(--color-text-faint);
+  font-size: 0.78rem;
+}
+.a11y-item .a11y-text {
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .visit-grid {
+    grid-template-columns: 1fr;
+  }
+  .visit-sidebar {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+  }
+  .visit-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .info-row .info-price,
+  .info-row .info-flag {
+    text-align: left;
+  }
+}

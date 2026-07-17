@@ -1,0 +1,213 @@
+/* Shared by exhibitions.html + collection.html */
+
+.filter-tabs-wrap {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+}
+
+.filter-tab {
+  font-size: 0.95rem;
+  color: var(--color-text-dim);
+  padding-bottom: 12px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.filter-tab .mono {
+  font-size: 0.7rem;
+  color: var(--color-text-faint);
+  margin-left: 4px;
+}
+.filter-tab.is-active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+.filter-tab:hover {
+  color: var(--color-text);
+}
+
+.listing-section {
+  padding: 72px 0 120px;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.exhibit-panel.is-entering {
+  animation: panelFadeIn 480ms var(--ease-out) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .exhibit-panel.is-entering {
+    animation: none;
+  }
+}
+
+/* ---- Exhibition rows ---- */
+
+.exhibit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.exhibit-row:first-child {
+  padding-top: 0;
+}
+
+.exhibit-figure {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.exhibit-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exhibit-status {
+  display: block;
+  color: var(--color-text-faint);
+  font-size: 0.72rem;
+  margin-bottom: 18px;
+}
+
+.exhibit-dates {
+  display: block;
+  color: var(--color-text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+.exhibit-title {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-bottom: 20px;
+}
+
+.exhibit-copy p {
+  color: var(--color-text-dim);
+  max-width: 52ch;
+  margin-bottom: 24px;
+}
+
+.exhibit-venue {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-faint);
+  margin-bottom: 24px;
+}
+
+/* ---- Collection filter grid ---- */
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 28px;
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.artifact-card {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+}
+.artifact-card.is-visible {
+  display: flex;
+  animation: cardFadeIn 440ms var(--ease-out) both;
+}
+
+.artifact-figure {
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+}
+
+.artifact-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.artifact-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.4) brightness(0.68);
+  transition: transform 0.65s var(--ease-out), filter 2.6s var(--ease-out);
+}
+.artifact-photo.is-revealed img {
+  filter: grayscale(0) contrast(1.1) brightness(0.9);
+}
+.artifact-card:hover .artifact-photo img {
+  transform: scale(1.05);
+}
+.artifact-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(22, 22, 24, 0) 48%, rgba(22, 22, 24, 0.72) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artifact-card.is-visible {
+    animation: none;
+  }
+  .artifact-photo img {
+    transition: none;
+    filter: grayscale(0) contrast(1.1) brightness(0.9);
+  }
+}
+
+.artifact-title {
+  font-size: 0.95rem;
+}
+.artifact-era {
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+}
+
+.collection-empty {
+  color: var(--color-text-faint);
+  font-size: 0.9rem;
+  padding: 40px 0;
+  display: none;
+}
+.collection-empty.is-visible {
+  display: block;
+}
+
+@media (max-width: 980px) {
+  .exhibit-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .collection-grid {
+    grid-template-columns: 1fr;
+  }
+  .filter-tabs {
+    gap: 24px;
+  }
+}
