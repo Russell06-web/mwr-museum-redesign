@@ -2,6 +2,9 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    document.documentElement.setAttribute("data-lang", localStorage.getItem("mwr-lang") || "zh");
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>開放時間｜參觀｜MWR 世界宗教博物館</title>
   <meta name="description" content="世界宗教博物館各日開放時間、最後入館時間與館內設施營業時間。" />
@@ -12,31 +15,31 @@
   <link rel="stylesheet" href="css/visit.css" />
 </head>
 <body data-nav-section="visit">
-  <a class="skip-link" href="#main">跳至主要內容</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">跳至主要內容</a>
 
   <header class="site-header">
     <div class="brand">
       <a href="index.html" class="brand-mark">MWR</a>
-      <span class="brand-sub">世界宗教博物館</span>
-      <span class="crumb">參觀</span>
+      <span class="brand-sub" data-i18n="brand.sub">世界宗教博物館</span>
+      <span class="crumb" data-i18n="crumb.visit">參觀</span>
     </div>
     <div class="header-actions">
       <a href="#" class="lang-toggle">EN</a>
       <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="nav-overlay">
         <span class="bars"><span></span><span></span></span>
-        <span>選單</span>
+        <span data-i18n="nav.menu">選單</span>
       </button>
     </div>
   </header>
 
   <div class="nav-overlay" data-nav-overlay id="nav-overlay">
-    <button class="nav-overlay-close" data-nav-close>關閉 CLOSE</button>
+    <button class="nav-overlay-close" data-nav-close data-i18n="nav.close">關閉</button>
     <div class="nav-overlay-body">
       <nav class="nav-overlay-main" aria-label="主導覽">
-        <a href="visit-hours.html" data-sub="visit">參觀</a>
-        <a href="exhibitions.html" data-sub="exhibitions">展覽</a>
-        <a href="collection.html" data-sub="collection">館藏</a>
-        <a href="about.html" data-sub="about">關於</a>
+        <a href="visit-hours.html" data-sub="visit" data-i18n="nav.link.visit">參觀</a>
+        <a href="exhibitions.html" data-sub="exhibitions" data-i18n="nav.link.exhibitions">展覽</a>
+        <a href="collection.html" data-sub="collection" data-i18n="nav.link.collection">館藏</a>
+        <a href="about.html" data-sub="about" data-i18n="nav.link.about">關於</a>
       </nav>
       <div class="nav-overlay-side">
         <div class="nav-overlay-sub" data-sub-panel></div>
@@ -44,7 +47,7 @@
           <div class="photo nav-overlay-photo">
             <img src="assets/images/visit/interior-spiral.jpg" alt="館內東廳挑高天窗與迴旋動線" />
           </div>
-          <figcaption>常設館藏．東廳</figcaption>
+          <figcaption data-i18n="nav.figcaption">常設館藏．東廳</figcaption>
         </figure>
       </div>
     </div>
@@ -53,9 +56,9 @@
         <a href="#">INSTAGRAM</a>
         <a href="#">FACEBOOK</a>
         <a href="#">YOUTUBE</a>
-        <a href="#">電子報</a>
+        <a href="#" data-i18n="nav.newsletter">電子報</a>
       </div>
-      <div class="visit-info">台灣．新北市永和區　·　週二至週日．09:00–18:00</div>
+      <div class="visit-info" data-i18n="nav.visitinfo">台灣．新北市永和區　·　週二至週日．09:00–18:00</div>
     </div>
   </div>
 
@@ -63,36 +66,36 @@
     <section class="visit-section">
       <div class="container visit-grid">
         <aside class="visit-sidebar">
-          <span class="eyebrow">規劃參觀</span>
+          <span class="eyebrow" data-i18n="visit.sidebar.eyebrow">規劃參觀</span>
           <nav class="visit-nav" aria-label="參觀資訊子導覽">
-            <a href="visit-hours.html" class="visit-nav-link is-current">開放時間</a>
-            <a href="visit-tickets.html" class="visit-nav-link">票價資訊</a>
-            <a href="visit-transport.html" class="visit-nav-link">交通指引</a>
-            <a href="visit-accessibility.html" class="visit-nav-link">無障礙服務</a>
-            <a href="visit-group.html" class="visit-nav-link">團體預約</a>
+            <a href="visit-hours.html" class="visit-nav-link is-current" data-i18n="visit.nav.hours">開放時間</a>
+            <a href="visit-tickets.html" class="visit-nav-link" data-i18n="visit.nav.tickets">票價資訊</a>
+            <a href="visit-transport.html" class="visit-nav-link" data-i18n="visit.nav.transport">交通指引</a>
+            <a href="visit-accessibility.html" class="visit-nav-link" data-i18n="visit.nav.accessibility">無障礙服務</a>
+            <a href="visit-group.html" class="visit-nav-link" data-i18n="visit.nav.group">團體預約</a>
           </nav>
           <span class="mono visit-page-count">01 / 05</span>
         </aside>
 
         <div class="visit-content">
-          <h1 class="display-title visit-title">開放<br />時間</h1>
+          <h1 class="display-title visit-title" data-i18n="visit.hours.title">開放<br />時間</h1>
 
           <div class="info-rows">
-            <div class="info-row"><span class="info-label">星期一</span><span class="info-value">休館</span><span></span></div>
-            <div class="info-row"><span class="info-label">星期二</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
-            <div class="info-row"><span class="info-label">星期三</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
-            <div class="info-row"><span class="info-label">星期四</span><span class="info-value mono">09:00 – 21:00</span><span class="info-flag">延長開館</span></div>
-            <div class="info-row"><span class="info-label">星期五</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
-            <div class="info-row"><span class="info-label">星期六</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
-            <div class="info-row"><span class="info-label">星期日</span><span class="info-value mono">09:00 – 17:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.mon">星期一</span><span class="info-value" data-i18n="visit.hours.closed">休館</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.tue">星期二</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.wed">星期三</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.thu">星期四</span><span class="info-value mono">09:00 – 21:00</span><span class="info-flag" data-i18n="visit.hours.extended">延長開館</span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.fri">星期五</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.sat">星期六</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.sun">星期日</span><span class="info-value mono">09:00 – 17:00</span><span></span></div>
           </div>
 
           <div class="info-group" style="margin-top: 56px;">
             <span class="eyebrow">ADDITIONAL INFORMATION</span>
             <div class="info-rows">
-              <div class="info-row"><span class="info-label">最後入館</span><span class="info-value">閉館前 60 分鐘</span><span></span></div>
-              <div class="info-row"><span class="info-label">館內咖啡廳</span><span class="info-value mono">09:00 – 17:30</span><span class="info-flag">每日</span></div>
-              <div class="info-row"><span class="info-label">紀念品店</span><span class="info-value mono">09:30 – 17:30</span><span class="info-flag">每日</span></div>
+              <div class="info-row"><span class="info-label" data-i18n="visit.hours.lastentry.label">最後入館</span><span class="info-value" data-i18n="visit.hours.lastentry.value">閉館前 60 分鐘</span><span></span></div>
+              <div class="info-row"><span class="info-label" data-i18n="visit.hours.cafe.label">館內咖啡廳</span><span class="info-value mono">09:00 – 17:30</span><span class="info-flag" data-i18n="visit.hours.daily">每日</span></div>
+              <div class="info-row"><span class="info-label" data-i18n="visit.hours.shop.label">紀念品店</span><span class="info-value mono">09:30 – 17:30</span><span class="info-flag" data-i18n="visit.hours.daily">每日</span></div>
             </div>
           </div>
         </div>
@@ -104,33 +107,31 @@
     <div class="footer-top">
       <div class="footer-brand">
         <span class="brand-mark">MWR</span>
-        <address>
-          234 新北市永和區<br />
-          中山路 236 號
-        </address>
+        <address data-i18n="footer.address">234 新北市永和區<br />中山路 236 號</address>
       </div>
       <div class="footer-links">
         <div class="footer-col">
-          <a href="visit-hours.html">參觀資訊</a>
-          <a href="#">支持我們</a>
-          <a href="#">媒體專區</a>
-          <a href="#">人才招募</a>
-          <a href="visit-accessibility.html">無障礙服務</a>
+          <a href="visit-hours.html" data-i18n="footer.visitinfo">參觀資訊</a>
+          <a href="#" data-i18n="footer.support">支持我們</a>
+          <a href="#" data-i18n="footer.press">媒體專區</a>
+          <a href="#" data-i18n="footer.careers">人才招募</a>
+          <a href="visit-accessibility.html" data-i18n="footer.accessibility">無障礙服務</a>
         </div>
         <div class="footer-col">
           <a href="#">INSTAGRAM</a>
           <a href="#">FACEBOOK</a>
           <a href="#">YOUTUBE</a>
-          <a href="#">電子報</a>
+          <a href="#" data-i18n="footer.newsletter">電子報</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 世界宗教博物館 版權所有</span>
-      <span>隱私權政策　·　使用條款</span>
+      <span data-i18n="footer.copyright">© 2026 世界宗教博物館 版權所有</span>
+      <span data-i18n="footer.legal">隱私權政策　·　使用條款</span>
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/reveal.js"></script>
 </body>

@@ -2,6 +2,9 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    document.documentElement.setAttribute("data-lang", localStorage.getItem("mwr-lang") || "zh");
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>館藏｜MWR 世界宗教博物館</title>
   <meta name="description" content="世界宗教博物館館藏瀏覽——橫跨十二個宗教傳統的文物典藏。" />
@@ -12,31 +15,31 @@
   <link rel="stylesheet" href="css/listing.css" />
 </head>
 <body data-nav-section="collection">
-  <a class="skip-link" href="#main">跳至主要內容</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">跳至主要內容</a>
 
   <header class="site-header">
     <div class="brand">
       <a href="index.html" class="brand-mark">MWR</a>
-      <span class="brand-sub">世界宗教博物館</span>
-      <span class="crumb">館藏</span>
+      <span class="brand-sub" data-i18n="brand.sub">世界宗教博物館</span>
+      <span class="crumb" data-i18n="crumb.collection">館藏</span>
     </div>
     <div class="header-actions">
       <a href="#" class="lang-toggle">EN</a>
       <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="nav-overlay">
         <span class="bars"><span></span><span></span></span>
-        <span>選單</span>
+        <span data-i18n="nav.menu">選單</span>
       </button>
     </div>
   </header>
 
   <div class="nav-overlay" data-nav-overlay id="nav-overlay">
-    <button class="nav-overlay-close" data-nav-close>關閉 CLOSE</button>
+    <button class="nav-overlay-close" data-nav-close data-i18n="nav.close">關閉</button>
     <div class="nav-overlay-body">
       <nav class="nav-overlay-main" aria-label="主導覽">
-        <a href="visit-hours.html" data-sub="visit">參觀</a>
-        <a href="exhibitions.html" data-sub="exhibitions">展覽</a>
-        <a href="collection.html" data-sub="collection">館藏</a>
-        <a href="about.html" data-sub="about">關於</a>
+        <a href="visit-hours.html" data-sub="visit" data-i18n="nav.link.visit">參觀</a>
+        <a href="exhibitions.html" data-sub="exhibitions" data-i18n="nav.link.exhibitions">展覽</a>
+        <a href="collection.html" data-sub="collection" data-i18n="nav.link.collection">館藏</a>
+        <a href="about.html" data-sub="about" data-i18n="nav.link.about">關於</a>
       </nav>
       <div class="nav-overlay-side">
         <div class="nav-overlay-sub" data-sub-panel></div>
@@ -44,7 +47,7 @@
           <div class="photo nav-overlay-photo">
             <img src="assets/images/visit/interior-spiral.jpg" alt="館內東廳挑高天窗與迴旋動線" />
           </div>
-          <figcaption>常設館藏．東廳</figcaption>
+          <figcaption data-i18n="nav.figcaption">常設館藏．東廳</figcaption>
         </figure>
       </div>
     </div>
@@ -53,31 +56,31 @@
         <a href="#">INSTAGRAM</a>
         <a href="#">FACEBOOK</a>
         <a href="#">YOUTUBE</a>
-        <a href="#">電子報</a>
+        <a href="#" data-i18n="nav.newsletter">電子報</a>
       </div>
-      <div class="visit-info">台灣．新北市永和區　·　週二至週日．09:00–18:00</div>
+      <div class="visit-info" data-i18n="nav.visitinfo">台灣．新北市永和區　·　週二至週日．09:00–18:00</div>
     </div>
   </div>
 
   <main id="main">
     <section class="page-intro">
       <div class="container">
-        <span class="eyebrow">3,000+ 件館藏　·　12 個傳統</span>
-        <h1 class="display-title">館藏</h1>
+        <span class="eyebrow" data-i18n="col.eyebrow">3,000+ 件館藏　·　12 個傳統</span>
+        <h1 class="display-title" data-i18n="col.title">館藏</h1>
       </div>
     </section>
 
     <section class="filter-tabs-wrap">
       <div class="container">
         <div class="filter-tabs" role="tablist" aria-label="館藏分類篩選">
-          <button class="filter-tab is-active" role="tab" aria-selected="true" data-filter="all">全部</button>
-          <button class="filter-tab" role="tab" aria-selected="false" data-filter="life">生命之旅</button>
-          <button class="filter-tab" role="tab" aria-selected="false" data-filter="sacred-art">宗教藝術</button>
-          <button class="filter-tab" role="tab" aria-selected="false" data-filter="buddhism">佛教</button>
-          <button class="filter-tab" role="tab" aria-selected="false" data-filter="islam">伊斯蘭</button>
-          <button class="filter-tab" role="tab" aria-selected="false" data-filter="hinduism">印度教</button>
-          <button class="filter-tab" role="tab" aria-selected="false" data-filter="christianity">基督宗教</button>
-          <button class="filter-tab" role="tab" aria-selected="false" data-filter="indigenous">原住民</button>
+          <button class="filter-tab is-active" role="tab" aria-selected="true" data-filter="all" data-i18n="col.filter.all">全部</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="life" data-i18n="col.filter.life">生命之旅</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="sacred-art" data-i18n="col.filter.sacredart">宗教藝術</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="buddhism" data-i18n="col.filter.buddhism">佛教</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="islam" data-i18n="col.filter.islam">伊斯蘭</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="hinduism" data-i18n="col.filter.hinduism">印度教</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="christianity" data-i18n="col.filter.christianity">基督宗教</button>
+          <button class="filter-tab" role="tab" aria-selected="false" data-filter="indigenous" data-i18n="col.filter.indigenous">原住民</button>
         </div>
       </div>
     </section>
@@ -87,86 +90,86 @@
         <div class="collection-grid">
           <article class="artifact-card" data-category="life">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-shrine.jpg" alt="鎏金儀式人像群祭壇" /></div></div>
-            <span class="artifact-title">儀式人像群</span>
-            <span class="artifact-era mono">西元前 3 世紀</span>
+            <span class="artifact-title" data-i18n="col.a1.title">儀式人像群</span>
+            <span class="artifact-era mono" data-i18n="col.a1.era">西元前 3 世紀</span>
           </article>
           <article class="artifact-card" data-category="christianity">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/light-reverence.jpg" alt="教堂彩窗殘片" /></div></div>
-            <span class="artifact-title">教堂彩窗殘片</span>
-            <span class="artifact-era mono">19 世紀</span>
+            <span class="artifact-title" data-i18n="col.a2.title">教堂彩窗殘片</span>
+            <span class="artifact-era mono" data-i18n="col.a2.era">19 世紀</span>
           </article>
           <article class="artifact-card" data-category="buddhism">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-pagoda.jpg" alt="五層寶塔模型" /></div></div>
-            <span class="artifact-title">五層寶塔模型</span>
-            <span class="artifact-era mono">唐朝，7 世紀</span>
+            <span class="artifact-title" data-i18n="col.a3.title">五層寶塔模型</span>
+            <span class="artifact-era mono" data-i18n="col.a3.era">唐朝，7 世紀</span>
           </article>
           <article class="artifact-card" data-category="islam">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-tile.jpg" alt="伊茲尼克藍色磁磚" /></div></div>
-            <span class="artifact-title">伊茲尼克藍色磁磚</span>
-            <span class="artifact-era mono">鄂圖曼，16 世紀</span>
+            <span class="artifact-title" data-i18n="col.a4.title">伊茲尼克藍色磁磚</span>
+            <span class="artifact-era mono" data-i18n="col.a4.era">鄂圖曼，16 世紀</span>
           </article>
           <article class="artifact-card" data-category="islam">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-star.jpg" alt="幾何星形徽章" /></div></div>
-            <span class="artifact-title">幾何星形徽章</span>
-            <span class="artifact-era mono">薩法維，17 世紀</span>
+            <span class="artifact-title" data-i18n="col.a5.title">幾何星形徽章</span>
+            <span class="artifact-era mono" data-i18n="col.a5.era">薩法維，17 世紀</span>
           </article>
           <article class="artifact-card" data-category="hinduism">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-shiva.jpg" alt="那吒羅闍——舞蹈濕婆" /></div></div>
-            <span class="artifact-title">那吒羅闍——舞蹈濕婆</span>
-            <span class="artifact-era mono">朱羅王朝，10 世紀</span>
+            <span class="artifact-title" data-i18n="col.a6.title">那吒羅闍——舞蹈濕婆</span>
+            <span class="artifact-era mono" data-i18n="col.a6.era">朱羅王朝，10 世紀</span>
           </article>
           <article class="artifact-card" data-category="hinduism">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-apsara.jpg" alt="飛天仙女浮雕" /></div></div>
-            <span class="artifact-title">飛天仙女浮雕</span>
-            <span class="artifact-era mono">高棉，12 世紀</span>
+            <span class="artifact-title" data-i18n="col.a7.title">飛天仙女浮雕</span>
+            <span class="artifact-era mono" data-i18n="col.a7.era">高棉，12 世紀</span>
           </article>
           <article class="artifact-card" data-category="hinduism">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-column.jpg" alt="神廟柱身碎片" /></div></div>
-            <span class="artifact-title">神廟柱身碎片</span>
-            <span class="artifact-era mono">達羅毗荼，14 世紀</span>
+            <span class="artifact-title" data-i18n="col.a8.title">神廟柱身碎片</span>
+            <span class="artifact-era mono" data-i18n="col.a8.era">達羅毗荼，14 世紀</span>
           </article>
           <article class="artifact-card" data-category="hinduism">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-garuda.jpg" alt="迦樓羅尖頂飾" /></div></div>
-            <span class="artifact-title">迦樓羅尖頂飾</span>
-            <span class="artifact-era mono">峇里島，18 世紀</span>
+            <span class="artifact-title" data-i18n="col.a9.title">迦樓羅尖頂飾</span>
+            <span class="artifact-era mono" data-i18n="col.a9.era">峇里島，18 世紀</span>
           </article>
           <article class="artifact-card" data-category="indigenous">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-mask.jpg" alt="祭儀面具" /></div></div>
-            <span class="artifact-title">祭儀面具</span>
-            <span class="artifact-era mono">前哥倫布，8 世紀</span>
+            <span class="artifact-title" data-i18n="col.a10.title">祭儀面具</span>
+            <span class="artifact-era mono" data-i18n="col.a10.era">前哥倫布，8 世紀</span>
           </article>
           <article class="artifact-card" data-category="buddhism">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-guanyin.jpg" alt="木雕觀音像" /></div></div>
-            <span class="artifact-title">木雕觀音像</span>
-            <span class="artifact-era mono">宋朝，12 世紀</span>
+            <span class="artifact-title" data-i18n="col.a11.title">木雕觀音像</span>
+            <span class="artifact-era mono" data-i18n="col.a11.era">宋朝，12 世紀</span>
           </article>
           <article class="artifact-card" data-category="buddhism">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-bodhisattva.jpg" alt="青銅菩薩立像" /></div></div>
-            <span class="artifact-title">青銅菩薩立像</span>
-            <span class="artifact-era mono">唐朝，8 世紀</span>
+            <span class="artifact-title" data-i18n="col.a12.title">青銅菩薩立像</span>
+            <span class="artifact-era mono" data-i18n="col.a12.era">唐朝，8 世紀</span>
           </article>
           <article class="artifact-card" data-category="sacred-art">
             <div class="artifact-figure"><div class="artifact-photo"><img src="assets/images/collection/artifact-relief.jpg" alt="門楣浮雕飾板" /></div></div>
-            <span class="artifact-title">門楣浮雕飾板</span>
-            <span class="artifact-era mono">宋朝，11 世紀</span>
+            <span class="artifact-title" data-i18n="col.a13.title">門楣浮雕飾板</span>
+            <span class="artifact-era mono" data-i18n="col.a13.era">宋朝，11 世紀</span>
           </article>
         </div>
-        <p class="collection-empty" data-empty-state>此類別目前無展示文物</p>
+        <p class="collection-empty" data-empty-state data-i18n="col.empty">此類別目前無展示文物</p>
       </div>
     </section>
 
     <section class="stats-row">
       <div class="stat">
         <div class="stat-number">12,000+</div>
-        <div class="stat-label">原始文獻</div>
+        <div class="stat-label" data-i18n="col.stat1.label">原始文獻</div>
       </div>
       <div class="stat">
         <div class="stat-number">640</div>
-        <div class="stat-label">學術出版品</div>
+        <div class="stat-label" data-i18n="col.stat2.label">學術出版品</div>
       </div>
       <div class="stat">
         <div class="stat-number">4,800</div>
-        <div class="stat-label">影像記錄</div>
+        <div class="stat-label" data-i18n="col.stat3.label">影像記錄</div>
       </div>
     </section>
   </main>
@@ -175,33 +178,31 @@
     <div class="footer-top">
       <div class="footer-brand">
         <span class="brand-mark">MWR</span>
-        <address>
-          234 新北市永和區<br />
-          中山路 236 號
-        </address>
+        <address data-i18n="footer.address">234 新北市永和區<br />中山路 236 號</address>
       </div>
       <div class="footer-links">
         <div class="footer-col">
-          <a href="visit-hours.html">參觀資訊</a>
-          <a href="#">支持我們</a>
-          <a href="#">媒體專區</a>
-          <a href="#">人才招募</a>
-          <a href="visit-accessibility.html">無障礙服務</a>
+          <a href="visit-hours.html" data-i18n="footer.visitinfo">參觀資訊</a>
+          <a href="#" data-i18n="footer.support">支持我們</a>
+          <a href="#" data-i18n="footer.press">媒體專區</a>
+          <a href="#" data-i18n="footer.careers">人才招募</a>
+          <a href="visit-accessibility.html" data-i18n="footer.accessibility">無障礙服務</a>
         </div>
         <div class="footer-col">
           <a href="#">INSTAGRAM</a>
           <a href="#">FACEBOOK</a>
           <a href="#">YOUTUBE</a>
-          <a href="#">電子報</a>
+          <a href="#" data-i18n="footer.newsletter">電子報</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 世界宗教博物館 版權所有</span>
-      <span>隱私權政策　·　使用條款</span>
+      <span data-i18n="footer.copyright">© 2026 世界宗教博物館 版權所有</span>
+      <span data-i18n="footer.legal">隱私權政策　·　使用條款</span>
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/reveal.js"></script>
   <script src="js/collection-filter.js"></script>
