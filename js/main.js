@@ -9,22 +9,6 @@
   update();
 })();
 
-// Desktop primary-nav active state: highlight the link matching the
-// current page's section. The homepage intentionally has no
-// data-nav-section, so none of the four links are marked active there.
-(function () {
-  var links = document.querySelectorAll(".primary-nav-link");
-  if (!links.length) return;
-  var section = document.body.getAttribute("data-nav-section");
-  if (!section) return;
-  links.forEach(function (link) {
-    if (link.dataset.navTarget === section) {
-      link.classList.add("is-active");
-      link.setAttribute("aria-current", "page");
-    }
-  });
-})();
-
 // Shared behavior: nav overlay open/close, submenu swap, focus handling
 (function () {
   // Every entry below points at a real page or a real in-page section — no
@@ -163,7 +147,7 @@
   // hidden from assistive tech while the overlay is open, so Tab and
   // screen-reader virtual-cursor navigation both stay trapped inside it.
   var backgroundEls = document.querySelectorAll(
-    "main, .site-footer, .site-header .brand, .site-header .primary-nav, .site-header .lang-toggle, .site-header .header-cta"
+    "main, .site-footer, .site-header .brand, .site-header .lang-toggle"
   );
 
   function setBackgroundInert(isInert) {
@@ -236,23 +220,6 @@
   });
 })();
 
-// Hero open/closed status: reads the visitor's real local day of week
-// (museum is closed Mondays) so the homepage always reflects "today"
-// accurately rather than a hardcoded state.
-(function () {
-  var statusEl = document.querySelector("[data-hero-status]");
-  if (!statusEl) return;
-  var isMonday = new Date().getDay() === 1;
-  statusEl.classList.toggle("is-closed-today", isMonday);
-  var textEl = statusEl.querySelector("[data-hero-status-text]");
-  if (textEl) {
-    var key = isMonday ? "home.hero.statusClosedToday" : "home.hero.statusOpenToday";
-    textEl.setAttribute("data-i18n", key);
-    var lang = document.documentElement.getAttribute("data-lang") || "zh";
-    var dict = (window.I18N && window.I18N[lang]) || {};
-    if (dict[key]) textEl.textContent = dict[key];
-  }
-})();
 
 // Language toggle: EN / 中, persisted in localStorage, no page reload
 (function () {

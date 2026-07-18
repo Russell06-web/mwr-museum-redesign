@@ -52,17 +52,6 @@
   margin-bottom: 56px;
 }
 
-.visit-figure {
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  margin-bottom: 8px;
-}
-.visit-figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* ---- label / value row list, used by hours / tickets / transport / group ---- */
 
 .info-group {

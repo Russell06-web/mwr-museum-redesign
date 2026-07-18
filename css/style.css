@@ -50,9 +50,6 @@
 html {
   background: var(--color-bg);
   scroll-behavior: smooth;
-}
-
-html {
   font-size: 100%; /* 16px base */
   /* Reserves the scrollbar's width permanently so that locking scroll while
      the nav overlay is open (body.nav-open { overflow: hidden }) doesn't
@@ -253,12 +250,6 @@ button {
   margin-bottom: 8px;
 }
 
-.page-intro-sub {
-  margin-top: 24px;
-  color: var(--color-text-secondary);
-  font-size: 0.85rem;
-}
-
 /* ==========================================================================
    Top navigation
    ========================================================================== */
@@ -325,40 +316,6 @@ button {
   }
 }
 
-/* ---- Desktop primary navigation (>900px) ---- */
-
-.primary-nav {
-  display: none;
-  align-items: center;
-  gap: 34px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.03em;
-}
-
-.primary-nav-link {
-  position: relative;
-  color: var(--color-text-secondary);
-  padding: 8px 1px;
-  transition: color 0.2s var(--ease);
-}
-.primary-nav-link:hover,
-.primary-nav-link:focus-visible {
-  color: var(--color-text);
-}
-.primary-nav-link.is-active {
-  color: var(--color-text);
-}
-.primary-nav-link.is-active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: var(--color-gold);
-}
-
 .header-actions {
   display: flex;
   align-items: center;
@@ -382,29 +339,9 @@ button {
   color: var(--color-text);
 }
 
-/* a.header-cta (element + class) is used rather than plain .header-cta so
-   this reliably beats .btn's later display:inline-flex rule — two
-   single-class selectors of equal specificity would otherwise resolve by
-   source order alone, and .btn happens to come after this in the cascade. */
-a.header-cta {
-  display: none;
-}
-
-@media (min-width: 901px) {
-  .primary-nav {
-    display: flex;
-  }
-  a.header-cta {
-    display: inline-flex;
-  }
-  .menu-toggle {
-    display: none;
-  }
-  .crumb {
-    display: none;
-  }
-}
-
+/* The hamburger + "選單" trigger is now the single, universal entry point
+   to navigation at every viewport width — there's no separate desktop nav
+   to swap in above 900px, so this has no display:none media override. */
 .menu-toggle {
   display: flex;
   align-items: center;
@@ -686,31 +623,16 @@ body.nav-open {
   border-color: var(--color-text);
 }
 
-/* ---- disabled / concept-only affordance: used wherever a link has no real
-   destination yet, instead of a href="#" that goes nowhere ---- */
+/* ---- disabled affordance: used wherever a link has no real destination
+   yet, instead of a href="#" that goes nowhere. Uses the muted (not
+   disabled) text tier deliberately — these are normal-size labels, and
+   --color-text-disabled only clears WCAG AA at large-text sizes. ---- */
 
 .is-disabled {
-  color: var(--color-text-disabled) !important;
+  color: var(--color-text-muted) !important;
   border-color: transparent !important;
   cursor: default;
   pointer-events: none;
-}
-
-.disabled-note {
-  font-family: var(--font-sans);
-  font-size: 0.75em;
-  margin-left: 6px;
-  font-style: italic;
-}
-
-.disabled-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--color-text-disabled);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  cursor: default;
 }
 
 /* ==========================================================================
@@ -824,11 +746,18 @@ main {
 }
 
 .footer-disclaimer {
+  max-width: 62ch;
+}
+.footer-disclaimer p {
   font-family: var(--font-sans);
   font-size: 0.8rem;
   line-height: 1.6;
+  color: var(--color-text-muted);
+}
+.footer-disclaimer p:first-child {
   color: var(--color-text-secondary);
-  max-width: 62ch;
+  font-weight: 500;
+  margin-bottom: 6px;
 }
 
 .footer-bottom-row {
