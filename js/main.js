@@ -9,8 +9,28 @@
   update();
 })();
 
+// Desktop primary-nav active state: highlight the link matching the
+// current page's section. The homepage intentionally has no
+// data-nav-section, so none of the four links are marked active there.
+(function () {
+  var links = document.querySelectorAll(".primary-nav-link");
+  if (!links.length) return;
+  var section = document.body.getAttribute("data-nav-section");
+  if (!section) return;
+  links.forEach(function (link) {
+    if (link.dataset.navTarget === section) {
+      link.classList.add("is-active");
+      link.setAttribute("aria-current", "page");
+    }
+  });
+})();
+
 // Shared behavior: nav overlay open/close, submenu swap, focus handling
 (function () {
+  // Every entry below points at a real page or a real in-page section — no
+  // two labels within a group resolve to the exact same destination, and
+  // items that had no distinct target of their own (e.g. "研究典藏",
+  // "數位館藏", "新聞媒體") were removed rather than pointed at a duplicate.
   var SUBMENUS = {
     zh: {
       visit: {
@@ -18,7 +38,6 @@
         items: [
           ["開放時間", "visit-hours.html"],
           ["票價資訊", "visit-tickets.html"],
-          ["導覽服務", "visit-hours.html"],
           ["交通指引", "visit-transport.html"],
           ["團體預約", "visit-group.html"],
           ["無障礙服務", "visit-accessibility.html"]
@@ -31,29 +50,20 @@
           ["即將開展", "exhibitions.html#upcoming"],
           ["歷年展覽", "exhibitions.html#past"],
           ["虛擬導覽", "index.html#tour"],
-          ["展覽圖錄", "exhibitions.html"],
-          ["巡迴借展", "exhibitions.html"]
+          ["講座活動", "index.html#events"]
         ]
       },
       collection: {
         title: "館藏",
         items: [
-          ["館藏瀏覽", "collection.html"],
-          ["研究典藏", "collection.html"],
-          ["文物保存", "collection.html"],
-          ["數位館藏", "collection.html"],
-          ["借展合作", "collection.html"],
-          ["出版品", "collection.html"]
+          ["館藏瀏覽", "collection.html"]
         ]
       },
       about: {
         title: "關於",
         items: [
-          ["我們的理念", "about.html#mission"],
-          ["歷史與使命", "about.html#mission"],
-          ["館務領導", "about.html#team"],
-          ["新聞媒體", "about.html"],
-          ["人才招募", "about.html"],
+          ["博物館理念與歷史", "about.html#mission"],
+          ["館務團隊", "about.html#team"],
           ["聯絡我們", "about.html#contact"]
         ]
       }
@@ -64,7 +74,6 @@
         items: [
           ["Opening Hours", "visit-hours.html"],
           ["Tickets & Pricing", "visit-tickets.html"],
-          ["Guided Tours", "visit-hours.html"],
           ["Directions", "visit-transport.html"],
           ["Group Bookings", "visit-group.html"],
           ["Accessibility", "visit-accessibility.html"]
@@ -77,29 +86,20 @@
           ["Upcoming", "exhibitions.html#upcoming"],
           ["Past", "exhibitions.html#past"],
           ["Virtual Tour", "index.html#tour"],
-          ["Exhibition Catalog", "exhibitions.html"],
-          ["Traveling Exhibits", "exhibitions.html"]
+          ["Lectures & Events", "index.html#events"]
         ]
       },
       collection: {
         title: "Collection",
         items: [
-          ["Browse Collection", "collection.html"],
-          ["Research Archive", "collection.html"],
-          ["Conservation", "collection.html"],
-          ["Digital Collection", "collection.html"],
-          ["Loans & Partnerships", "collection.html"],
-          ["Publications", "collection.html"]
+          ["Browse Collection", "collection.html"]
         ]
       },
       about: {
         title: "About",
         items: [
-          ["Our Philosophy", "about.html#mission"],
-          ["History & Mission", "about.html#mission"],
-          ["Leadership", "about.html#team"],
-          ["Press", "about.html"],
-          ["Careers", "about.html"],
+          ["Philosophy & History", "about.html#mission"],
+          ["Leadership Team", "about.html#team"],
           ["Contact Us", "about.html#contact"]
         ]
       }
@@ -159,19 +159,46 @@
 
   var lastFocused = null;
 
+  // Background content (everything the overlay covers) is made inert and
+  // hidden from assistive tech while the overlay is open, so Tab and
+  // screen-reader virtual-cursor navigation both stay trapped inside it.
+  var backgroundEls = document.querySelectorAll(
+    "main, .site-footer, .site-header .brand, .site-header .primary-nav, .site-header .lang-toggle, .site-header .header-cta"
+  );
+
+  function setBackgroundInert(isInert) {
+    backgroundEls.forEach(function (el) {
+      if (isInert) {
+        el.setAttribute("inert", "");
+        el.setAttribute("aria-hidden", "true");
+      } else {
+        el.removeAttribute("inert");
+        el.removeAttribute("aria-hidden");
+      }
+    });
+  }
+
   function openMenu() {
     lastFocused = document.activeElement;
     overlay.classList.add("is-open");
     document.body.classList.add("nav-open");
     toggle.setAttribute("aria-expanded", "true");
-    var active = overlay.querySelector(".nav-overlay-main a.is-active") || overlay.querySelector(".nav-overlay-main a");
-    if (active) active.focus();
+    setBackgroundInert(true);
+    // deferred: the browser's own default focus-follows-click behavior on
+    // the toggle button runs after this handler and steals focus back —
+    // requestAnimationFrame isn't a long enough delay to reliably lose that
+    // race, so this uses a short timeout instead (imperceptible to users)
+    setTimeout(function () {
+      var active = overlay.querySelector(".nav-overlay-main a.is-active") || overlay.querySelector(".nav-overlay-main a");
+      if (active) active.focus();
+    }, 50);
   }
 
   function closeMenu() {
     overlay.classList.remove("is-open");
     document.body.classList.remove("nav-open");
     toggle.setAttribute("aria-expanded", "false");
+    setBackgroundInert(false);
     if (lastFocused) lastFocused.focus();
   }
 
@@ -209,6 +236,24 @@
   });
 })();
 
+// Hero open/closed status: reads the visitor's real local day of week
+// (museum is closed Mondays) so the homepage always reflects "today"
+// accurately rather than a hardcoded state.
+(function () {
+  var statusEl = document.querySelector("[data-hero-status]");
+  if (!statusEl) return;
+  var isMonday = new Date().getDay() === 1;
+  statusEl.classList.toggle("is-closed-today", isMonday);
+  var textEl = statusEl.querySelector("[data-hero-status-text]");
+  if (textEl) {
+    var key = isMonday ? "home.hero.statusClosedToday" : "home.hero.statusOpenToday";
+    textEl.setAttribute("data-i18n", key);
+    var lang = document.documentElement.getAttribute("data-lang") || "zh";
+    var dict = (window.I18N && window.I18N[lang]) || {};
+    if (dict[key]) textEl.textContent = dict[key];
+  }
+})();
+
 // Language toggle: EN / 中, persisted in localStorage, no page reload
 (function () {
   var root = document.documentElement;
@@ -216,7 +261,16 @@
   if (!langToggle) return;
 
   function syncLabel() {
-    langToggle.textContent = root.getAttribute("data-lang") === "en" ? "中" : "EN";
+    var isEn = root.getAttribute("data-lang") === "en";
+    langToggle.textContent = isEn ? "中" : "EN";
+    // the action label always describes what clicking will do, read in the
+    // language the visitor currently sees, not the language being offered
+    var dict = (window.I18N && window.I18N[isEn ? "en" : "zh"]) || {};
+    var actionLabel = dict[isEn ? "lang.toChinese" : "lang.toEnglish"];
+    if (actionLabel) {
+      langToggle.setAttribute("aria-label", actionLabel);
+      langToggle.setAttribute("title", actionLabel);
+    }
   }
   syncLabel();
 

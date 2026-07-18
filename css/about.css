@@ -25,12 +25,12 @@
   font-size: 0.9rem;
 }
 .mission-attribution .mono {
-  color: var(--color-text-faint);
+  color: var(--color-text-secondary);
   font-size: 0.75rem;
 }
 
 .mission-body {
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   max-width: 46ch;
 }
 
@@ -48,8 +48,8 @@
   position: absolute;
   left: 16px;
   bottom: 16px;
-  font-size: 0.68rem;
-  color: var(--color-text-dim);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
 }
 
 .stat-plus {
@@ -73,7 +73,7 @@
   font-size: 1.05rem;
 }
 .team-list .mono {
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   font-size: 0.85rem;
 }
 
@@ -89,8 +89,8 @@
 }
 .contact-list dt {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-text-faint);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
   margin-bottom: 6px;
 }
 .contact-list dd {

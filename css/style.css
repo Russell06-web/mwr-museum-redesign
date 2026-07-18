@@ -6,12 +6,29 @@
   --color-bg: #161618;
   --color-surface: #1d1d1f;
   --color-surface-2: #242426;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-strong: rgba(255, 255, 255, 0.22);
-  --color-text: #f0ede6;
-  --color-text-dim: rgba(240, 237, 230, 0.55);
-  --color-text-faint: rgba(240, 237, 230, 0.3);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.24);
+
+  /* Text: every tier at or above WCAG AA 4.5:1 against --color-bg, except
+     -disabled which is reserved for genuinely inactive demo elements (WCAG
+     exempts disabled controls from contrast requirements). Verified via
+     the sRGB relative-luminance formula, not eyeballed:
+       text 100%      -> 15.75:1
+       secondary 72%   -> 8.56:1
+       muted 58%       -> 5.96:1
+       disabled 42%    -> 3.72:1 (large-text tier only, never body copy) */
+  --color-text: #f3efe6;
+  --color-text-secondary: rgba(243, 239, 230, 0.72);
+  --color-text-muted: rgba(243, 239, 230, 0.58);
+  --color-text-disabled: rgba(243, 239, 230, 0.42);
   --color-accent: #ffffff;
+
+  /* Cultural accent palette — used sparingly, one dominant accent per page.
+     Never combine all three at once. */
+  --color-gold: #c5a86a;
+  --color-terracotta: #a86248;
+  --color-mineral-blue: #657b86;
+  --color-warm-white: #f3efe6;
 
   --font-serif: "Noto Serif TC", "Source Han Serif TC", serif;
   --font-sans: "Noto Sans TC", "Source Han Sans TC", -apple-system, sans-serif;
@@ -35,14 +52,29 @@ html {
   scroll-behavior: smooth;
 }
 
+html {
+  font-size: 100%; /* 16px base */
+  /* Reserves the scrollbar's width permanently so that locking scroll while
+     the nav overlay is open (body.nav-open { overflow: hidden }) doesn't
+     remove the scrollbar and shift all fixed-position content (header,
+     hero, etc.) rightward by its width when the overlay opens. */
+  scrollbar-gutter: stable;
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
-  font-weight: 300;
-  line-height: 1.6;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 img {
@@ -63,23 +95,23 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.3) brightness(0.72);
-  transition: filter 2.6s var(--ease-out), transform 0.85s var(--ease-out);
+  filter: grayscale(0.62) contrast(1.22) brightness(0.78);
+  transition: filter 2.4s var(--ease-out), transform 0.85s var(--ease-out);
   will-change: filter, transform;
 }
 
 .photo.is-revealed img {
-  filter: grayscale(0) contrast(1.04) brightness(0.94);
+  filter: grayscale(0.12) contrast(1.02) brightness(0.96);
 }
 
 .photo:hover img {
-  transform: scale(1.045);
+  transform: scale(1.02);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .photo img {
     transition: none;
-    filter: grayscale(0) contrast(1.04) brightness(0.94);
+    filter: grayscale(0.12) contrast(1.02) brightness(0.96);
   }
 }
 
@@ -97,7 +129,7 @@ img {
   right: 14px;
   z-index: 2;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(240, 237, 230, 0.75);
@@ -153,7 +185,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
 }
 
@@ -173,7 +205,7 @@ button {
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
 }
 
 .mono {
@@ -185,13 +217,13 @@ button {
   font-weight: 700;
   font-size: clamp(2.4rem, 5vw, 3.6rem);
   letter-spacing: -0.02em;
-  color: var(--color-text);
+  color: var(--color-gold);
 }
 
 .stat-label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   margin-top: 8px;
   letter-spacing: 0.02em;
 }
@@ -223,7 +255,7 @@ button {
 
 .page-intro-sub {
   margin-top: 24px;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   font-size: 0.85rem;
 }
 
@@ -265,12 +297,14 @@ button {
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: 0.04em;
+  color: var(--color-text);
 }
 
 .brand-sub {
-  font-size: 0.7rem;
-  color: var(--color-text-dim);
-  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
 }
 
 .crumb {
@@ -278,7 +312,51 @@ button {
   padding-left: 18px;
   border-left: 1px solid var(--color-border);
   font-size: 0.78rem;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
+}
+
+/* At the very narrowest supported width, the crumb competes with the full
+   museum name for header space and forces an ugly multi-line wrap; the page
+   heading right below the header already conveys the same section name, so
+   it's safe to drop here. */
+@media (max-width: 400px) {
+  .crumb {
+    display: none;
+  }
+}
+
+/* ---- Desktop primary navigation (>900px) ---- */
+
+.primary-nav {
+  display: none;
+  align-items: center;
+  gap: 34px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+}
+
+.primary-nav-link {
+  position: relative;
+  color: var(--color-text-secondary);
+  padding: 8px 1px;
+  transition: color 0.2s var(--ease);
+}
+.primary-nav-link:hover,
+.primary-nav-link:focus-visible {
+  color: var(--color-text);
+}
+.primary-nav-link.is-active {
+  color: var(--color-text);
+}
+.primary-nav-link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-gold);
 }
 
 .header-actions {
@@ -291,7 +369,12 @@ button {
 }
 
 .lang-toggle {
-  color: var(--color-text-dim);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--color-text-secondary);
   transition: color 0.2s var(--ease);
 }
 .lang-toggle:hover,
@@ -299,29 +382,60 @@ button {
   color: var(--color-text);
 }
 
+/* a.header-cta (element + class) is used rather than plain .header-cta so
+   this reliably beats .btn's later display:inline-flex rule — two
+   single-class selectors of equal specificity would otherwise resolve by
+   source order alone, and .btn happens to come after this in the cascade. */
+a.header-cta {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .primary-nav {
+    display: flex;
+  }
+  a.header-cta {
+    display: inline-flex;
+  }
+  .menu-toggle {
+    display: none;
+  }
+  .crumb {
+    display: none;
+  }
+}
+
 .menu-toggle {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
+  padding: 4px 2px;
   color: var(--color-text);
 }
 
-.menu-toggle .bars {
+/* Shared bars->X icon, used by both the header's menu-toggle and the
+   overlay's own close button (see .nav-overlay-close below) so the icon
+   reads as the same control staying on screen rather than one icon
+   vanishing and an unrelated one taking its place. */
+.bars {
   display: inline-flex;
   flex-direction: column;
   gap: 4px;
   width: 20px;
 }
-.menu-toggle .bars span {
+.bars span {
   height: 1px;
   background: currentColor;
   transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 
-.menu-toggle[aria-expanded="true"] .bars span:first-child {
+.menu-toggle[aria-expanded="true"] .bars span:first-child,
+.bars.is-x span:first-child {
   transform: translateY(5px) rotate(45deg);
 }
-.menu-toggle[aria-expanded="true"] .bars span:last-child {
+.menu-toggle[aria-expanded="true"] .bars span:last-child,
+.bars.is-x span:last-child {
   transform: translateY(-5px) rotate(-45deg);
 }
 
@@ -348,15 +462,24 @@ button {
   opacity: 1;
 }
 
+/* Positioned to land in the exact same spot as .menu-toggle in the header
+   (same 28px/var(--gutter) offsets, same min-height/gap), so the bars->X
+   icon reads as the one icon staying on screen instead of disappearing
+   underneath the overlay's opaque background. */
 .nav-overlay-close {
   position: absolute;
   top: 28px;
   right: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
 }
-.nav-overlay-close:hover {
+.nav-overlay-close:hover,
+.nav-overlay-close:focus-visible {
   color: var(--color-text);
 }
 
@@ -393,7 +516,7 @@ button {
   font-weight: 900;
   font-size: clamp(2.6rem, 6vw, 4.4rem);
   line-height: 1.18;
-  color: var(--color-text-faint);
+  color: var(--color-text-muted);
   transition: color 0.25s var(--ease);
   width: fit-content;
   opacity: 0;
@@ -431,15 +554,15 @@ button {
 
 .nav-overlay-sub .sub-heading {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-text-faint);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   letter-spacing: 0.08em;
   margin-bottom: 4px;
 }
 
 .nav-overlay-sub a {
   font-size: 1.05rem;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   transition: color 0.2s var(--ease);
 }
 .nav-overlay-sub a:hover,
@@ -459,8 +582,8 @@ button {
 }
 .nav-overlay-figure figcaption {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--color-text-faint);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   margin-top: 8px;
 }
 
@@ -472,7 +595,7 @@ button {
   padding-top: 20px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   opacity: 0;
 }
 .nav-overlay.is-open .nav-overlay-foot {
@@ -517,8 +640,15 @@ body.nav-open {
   font-size: 0.8rem;
   letter-spacing: 0.03em;
   padding: 15px 26px;
+  min-height: 44px;
   border: 1px solid var(--color-border-strong);
   transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.btn-compact {
+  padding: 10px 20px;
+  min-height: 44px;
+  font-size: 0.76rem;
 }
 
 .btn-primary {
@@ -533,7 +663,7 @@ body.nav-open {
 }
 
 .btn-ghost {
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
 }
 .btn-ghost:hover,
 .btn-ghost:focus-visible {
@@ -554,6 +684,33 @@ body.nav-open {
 .text-link:hover,
 .text-link:focus-visible {
   border-color: var(--color-text);
+}
+
+/* ---- disabled / concept-only affordance: used wherever a link has no real
+   destination yet, instead of a href="#" that goes nowhere ---- */
+
+.is-disabled {
+  color: var(--color-text-disabled) !important;
+  border-color: transparent !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+.disabled-note {
+  font-family: var(--font-sans);
+  font-size: 0.75em;
+  margin-left: 6px;
+  font-style: italic;
+}
+
+.disabled-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-disabled);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  cursor: default;
 }
 
 /* ==========================================================================
@@ -615,7 +772,7 @@ main {
 .footer-brand address {
   font-style: normal;
   font-size: 0.85rem;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   margin-top: 14px;
   line-height: 1.7;
 }
@@ -632,9 +789,25 @@ main {
   gap: 14px;
   font-size: 0.85rem;
 }
-.footer-col a {
-  color: var(--color-text-dim);
+.footer-col a,
+.footer-col .is-disabled {
+  display: inline-block;
+  padding: 3px 0;
+  color: var(--color-text-secondary);
   transition: color 0.2s var(--ease);
+}
+
+/* Below ~900px the footer is the primary touch-navigation surface for the
+   page, so links get a full 44px tap target here; above that, mouse
+   precision makes the tighter desktop spacing fine and a 44px minimum
+   would just add unwanted visual bulk to the footer. */
+@media (max-width: 900px) {
+  .footer-col a,
+  .footer-col .is-disabled {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
 .footer-col a:hover {
   color: var(--color-text);
@@ -646,12 +819,26 @@ main {
   padding-top: 24px;
   border-top: 1px solid var(--color-border);
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-disclaimer {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 62ch;
+}
+
+.footer-bottom-row {
+  display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-text-faint);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 720px) {

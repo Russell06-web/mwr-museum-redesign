@@ -14,26 +14,38 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/visit.css" />
 </head>
-<body data-nav-section="visit">
+<body data-nav-section="visit" data-title-key="title.visitHours" data-desc-key="desc.visitHours">
   <a class="skip-link" href="#main" data-i18n="a11y.skip">跳至主要內容</a>
 
   <header class="site-header">
-    <div class="brand">
-      <a href="index.html" class="brand-mark">MWR</a>
+    <a href="index.html" class="brand" data-i18n-aria="brand.aria" aria-label="世界宗教博物館首頁">
+      <span class="brand-mark">MWR</span>
       <span class="brand-sub" data-i18n="brand.sub">世界宗教博物館</span>
       <span class="crumb" data-i18n="crumb.visit">參觀</span>
-    </div>
+    </a>
+
+    <nav class="primary-nav" aria-label="主要導覽">
+      <a href="visit-hours.html" class="primary-nav-link" data-nav-target="visit" data-i18n="primarynav.visit">參觀資訊</a>
+      <a href="exhibitions.html" class="primary-nav-link" data-nav-target="exhibitions" data-i18n="primarynav.exhibitions">展覽活動</a>
+      <a href="collection.html" class="primary-nav-link" data-nav-target="collection" data-i18n="primarynav.collection">館藏探索</a>
+      <a href="about.html" class="primary-nav-link" data-nav-target="about" data-i18n="primarynav.about">關於宗博館</a>
+    </nav>
+
     <div class="header-actions">
-      <a href="#" class="lang-toggle">EN</a>
-      <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="nav-overlay">
+      <button type="button" class="lang-toggle" aria-label="切換為英文" title="切換為英文">EN</button>
+      <a href="visit-hours.html" class="btn btn-primary btn-compact header-cta" data-i18n="home.hero.cta1">規劃參觀</a>
+      <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="nav-overlay" aria-label="開啟導覽選單">
         <span class="bars"><span></span><span></span></span>
         <span data-i18n="nav.menu">選單</span>
       </button>
     </div>
   </header>
 
-  <div class="nav-overlay" data-nav-overlay id="nav-overlay">
-    <button class="nav-overlay-close" data-nav-close data-i18n="nav.close">關閉</button>
+  <div class="nav-overlay" data-nav-overlay id="nav-overlay" role="dialog" aria-modal="true" data-i18n-aria="nav.dialogLabel" aria-label="主要導覽選單">
+    <button class="nav-overlay-close" data-nav-close data-i18n-aria="nav.close" aria-label="關閉選單">
+      <span class="bars is-x"><span></span><span></span></span>
+      <span data-i18n="nav.close">關閉</span>
+    </button>
     <div class="nav-overlay-body">
       <nav class="nav-overlay-main" aria-label="主導覽">
         <a href="visit-hours.html" data-sub="visit" data-i18n="nav.link.visit">參觀</a>
@@ -53,12 +65,12 @@
     </div>
     <div class="nav-overlay-foot">
       <div class="social">
-        <a href="#">INSTAGRAM</a>
-        <a href="#">FACEBOOK</a>
-        <a href="#">YOUTUBE</a>
-        <a href="#" data-i18n="nav.newsletter">電子報</a>
+        <span class="is-disabled" aria-disabled="true" data-i18n-title="misc.conceptOnly" title="Concept feature">INSTAGRAM</span>
+        <span class="is-disabled" aria-disabled="true" data-i18n-title="misc.conceptOnly" title="Concept feature">FACEBOOK</span>
+        <span class="is-disabled" aria-disabled="true" data-i18n-title="misc.conceptOnly" title="Concept feature">YOUTUBE</span>
+        <span class="is-disabled" aria-disabled="true" data-i18n="nav.newsletter" data-i18n-title="misc.conceptOnly" title="Concept feature">電子報</span>
       </div>
-      <div class="visit-info" data-i18n="nav.visitinfo">台灣．新北市永和區　·　週二至週日．09:00–18:00</div>
+      <div class="visit-info" data-i18n="nav.visitinfo">台灣．新北市永和區　·　週二至週日．10:00–17:00，週一休館</div>
     </div>
   </div>
 
@@ -82,20 +94,20 @@
 
           <div class="info-rows">
             <div class="info-row"><span class="info-label" data-i18n="visit.hours.mon">星期一</span><span class="info-value" data-i18n="visit.hours.closed">休館</span><span></span></div>
-            <div class="info-row"><span class="info-label" data-i18n="visit.hours.tue">星期二</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
-            <div class="info-row"><span class="info-label" data-i18n="visit.hours.wed">星期三</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
-            <div class="info-row"><span class="info-label" data-i18n="visit.hours.thu">星期四</span><span class="info-value mono">09:00 – 21:00</span><span class="info-flag" data-i18n="visit.hours.extended">延長開館</span></div>
-            <div class="info-row"><span class="info-label" data-i18n="visit.hours.fri">星期五</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
-            <div class="info-row"><span class="info-label" data-i18n="visit.hours.sat">星期六</span><span class="info-value mono">09:00 – 18:00</span><span></span></div>
-            <div class="info-row"><span class="info-label" data-i18n="visit.hours.sun">星期日</span><span class="info-value mono">09:00 – 17:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.tue">星期二</span><span class="info-value mono">10:00 – 17:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.wed">星期三</span><span class="info-value mono">10:00 – 17:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.thu">星期四</span><span class="info-value mono">10:00 – 17:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.fri">星期五</span><span class="info-value mono">10:00 – 17:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.sat">星期六</span><span class="info-value mono">10:00 – 17:00</span><span></span></div>
+            <div class="info-row"><span class="info-label" data-i18n="visit.hours.sun">星期日</span><span class="info-value mono">10:00 – 17:00</span><span></span></div>
           </div>
 
           <div class="info-group" style="margin-top: 56px;">
             <span class="eyebrow">ADDITIONAL INFORMATION</span>
             <div class="info-rows">
               <div class="info-row"><span class="info-label" data-i18n="visit.hours.lastentry.label">最後入館</span><span class="info-value" data-i18n="visit.hours.lastentry.value">閉館前 60 分鐘</span><span></span></div>
-              <div class="info-row"><span class="info-label" data-i18n="visit.hours.cafe.label">館內咖啡廳</span><span class="info-value mono">09:00 – 17:30</span><span class="info-flag" data-i18n="visit.hours.daily">每日</span></div>
-              <div class="info-row"><span class="info-label" data-i18n="visit.hours.shop.label">紀念品店</span><span class="info-value mono">09:30 – 17:30</span><span class="info-flag" data-i18n="visit.hours.daily">每日</span></div>
+              <div class="info-row"><span class="info-label" data-i18n="visit.hours.cafe.label">館內咖啡廳</span><span class="info-value mono">10:00 – 17:00</span><span class="info-flag" data-i18n="visit.hours.daily">每日</span></div>
+              <div class="info-row"><span class="info-label" data-i18n="visit.hours.shop.label">紀念品店</span><span class="info-value mono">10:00 – 17:00</span><span class="info-flag" data-i18n="visit.hours.daily">每日</span></div>
             </div>
           </div>
         </div>
@@ -107,27 +119,30 @@
     <div class="footer-top">
       <div class="footer-brand">
         <span class="brand-mark">MWR</span>
-        <address data-i18n="footer.address">234 新北市永和區<br />中山路 236 號</address>
+        <address data-i18n="footer.address">234 新北市永和區<br />中山路一段 236 號 7 樓</address>
       </div>
       <div class="footer-links">
         <div class="footer-col">
           <a href="visit-hours.html" data-i18n="footer.visitinfo">參觀資訊</a>
-          <a href="#" data-i18n="footer.support">支持我們</a>
-          <a href="#" data-i18n="footer.press">媒體專區</a>
-          <a href="#" data-i18n="footer.careers">人才招募</a>
+          <span class="is-disabled" aria-disabled="true" data-i18n="footer.support" data-i18n-title="misc.conceptOnly" title="Concept feature">支持我們</span>
+          <span class="is-disabled" aria-disabled="true" data-i18n="footer.press" data-i18n-title="misc.conceptOnly" title="Concept feature">媒體專區</span>
+          <span class="is-disabled" aria-disabled="true" data-i18n="footer.careers" data-i18n-title="misc.conceptOnly" title="Concept feature">人才招募</span>
           <a href="visit-accessibility.html" data-i18n="footer.accessibility">無障礙服務</a>
         </div>
         <div class="footer-col">
-          <a href="#">INSTAGRAM</a>
-          <a href="#">FACEBOOK</a>
-          <a href="#">YOUTUBE</a>
-          <a href="#" data-i18n="footer.newsletter">電子報</a>
+          <span class="is-disabled" aria-disabled="true" data-i18n-title="misc.conceptOnly" title="Concept feature">INSTAGRAM</span>
+          <span class="is-disabled" aria-disabled="true" data-i18n-title="misc.conceptOnly" title="Concept feature">FACEBOOK</span>
+          <span class="is-disabled" aria-disabled="true" data-i18n-title="misc.conceptOnly" title="Concept feature">YOUTUBE</span>
+          <span class="is-disabled" aria-disabled="true" data-i18n="footer.newsletter" data-i18n-title="misc.conceptOnly" title="Concept feature">電子報</span>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span data-i18n="footer.copyright">© 2026 世界宗教博物館 版權所有</span>
-      <span data-i18n="footer.legal">隱私權政策　·　使用條款</span>
+      <p class="footer-disclaimer" data-i18n="footer.disclaimer">本網站為 UI/UX 概念設計作品，非世界宗教博物館官方網站。</p>
+      <div class="footer-bottom-row">
+        <span data-i18n="footer.copyright">© 2026 世界宗教博物館 版權所有</span>
+        <span data-i18n="footer.legal">隱私權政策　·　使用條款</span>
+      </div>
     </div>
   </footer>
 

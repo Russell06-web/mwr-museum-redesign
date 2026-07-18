@@ -17,18 +17,23 @@
 
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 600px;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
   background: var(--color-bg);
+  padding-bottom: 88px;
 }
 
 .hero-bg {
   position: absolute;
   top: 0;
   right: 0;
+  bottom: 0;
   width: 66%;
-  height: 100%;
   overflow: hidden;
   background: var(--color-bg);
 }
@@ -37,17 +42,17 @@
   height: 100%;
   object-fit: cover;
   object-position: center 22%;
-  filter: grayscale(1) contrast(1.35) brightness(0.68);
-  transition: filter 3.2s var(--ease-out);
+  filter: grayscale(0.58) contrast(1.26) brightness(0.74);
+  transition: filter 2.8s var(--ease-out);
 }
 .hero-bg.is-revealed img {
-  filter: grayscale(0) contrast(1.08) brightness(0.86);
+  filter: grayscale(0.1) contrast(1.04) brightness(0.9);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-bg img {
     transition: none;
-    filter: grayscale(0) contrast(1.08) brightness(0.86);
+    filter: grayscale(0.1) contrast(1.04) brightness(0.9);
   }
 }
 .hero-bg-fade-x {
@@ -75,10 +80,13 @@
 .hero-grid {
   position: relative;
   z-index: 2;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 108px;
+  /* Unlike other sections, the hero text should align with the header's
+     logo on wide screens rather than sit inside the centered 1440px
+     .container column — on wide viewports that centering left a large gap
+     between the header logo and the hero headline below it. */
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .hero-copy {
@@ -104,20 +112,60 @@
 
 .hero-lede {
   max-width: 46ch;
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   margin-top: 28px;
   font-size: 1.02rem;
   opacity: 0;
   animation: heroFadeUp 800ms var(--ease-out) 440ms both;
 }
 
+.hero-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 14px 18px;
+  border: 1px solid var(--color-border-strong);
+  width: fit-content;
+  max-width: 100%;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  animation: heroFadeUp 800ms var(--ease-out) 520ms both;
+}
+.hero-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  flex-shrink: 0;
+}
+.hero-status.is-closed-today .hero-status-dot {
+  background: var(--color-text-disabled);
+}
+[data-hero-status-text] {
+  color: var(--color-text);
+  font-weight: 500;
+}
+.hero-status-hours {
+  color: var(--color-text-secondary);
+}
+.hero-status-note {
+  padding-left: 10px;
+  margin-left: 2px;
+  border-left: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.85em;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-top: 40px;
+  margin-top: 28px;
   opacity: 0;
-  animation: heroFadeUp 800ms var(--ease-out) 600ms both;
+  animation: heroFadeUp 800ms var(--ease-out) 640ms both;
 }
 
 .hero-breathe {
@@ -146,6 +194,7 @@
   .hero-copy .eyebrow,
   .hero-title,
   .hero-lede,
+  .hero-status,
   .hero-actions {
     opacity: 1;
     animation: none;
@@ -153,6 +202,78 @@
   .hero-breathe,
   .hero-scroll-cue span {
     animation: none;
+  }
+}
+
+/* ---- Visit quick info ---- */
+
+.quick-info .eyebrow {
+  display: block;
+  margin-bottom: 32px;
+}
+
+.quick-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+.quick-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px 24px 32px;
+  min-height: 44px;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.25s var(--ease);
+}
+.quick-info-item:hover,
+.quick-info-item:focus-visible {
+  background-color: var(--color-surface);
+}
+
+.quick-info-num {
+  /* 1.3rem/700 clears the WCAG "large text" bold threshold (~18.66px), which
+     drops the required contrast ratio to 3:1 — needed for the terracotta and
+     mineral-blue variants to pass AA against the dark background at this
+     weight; a smaller size fails contrast even though the hex values match
+     the design tokens exactly. */
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.quick-info-item--gold .quick-info-num {
+  color: var(--color-gold);
+}
+.quick-info-item--terracotta .quick-info-num {
+  color: var(--color-terracotta);
+}
+.quick-info-item--blue .quick-info-num {
+  color: var(--color-mineral-blue);
+}
+
+.quick-info-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.quick-info-value {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .quick-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .quick-info-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -175,7 +296,7 @@
 }
 
 .featured-dates {
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   font-size: 0.85rem;
 }
 
@@ -185,7 +306,7 @@
 }
 
 .featured-copy p {
-  color: var(--color-text-dim);
+  color: var(--color-text-secondary);
   max-width: 52ch;
 }
 
@@ -196,34 +317,68 @@
   font-size: 0.85rem;
 }
 .featured-meta dt {
-  color: var(--color-text-faint);
+  color: var(--color-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   margin-bottom: 4px;
 }
 
-.exhibit-mini-list {
-  margin-top: 64px;
-  border-top: 1px solid var(--color-border);
+/* ---- Upcoming exhibition (single next-up row) ---- */
+
+.upcoming-exhibit .eyebrow {
+  display: block;
+  margin-bottom: 16px;
 }
-.exhibit-mini-list li {
-  display: flex;
-  gap: 32px;
-  align-items: baseline;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--color-border);
+.upcoming-exhibit .section-title {
+  margin-bottom: 40px;
 }
-.exhibit-mini-list .mono {
-  color: var(--color-text-faint);
-  font-size: 0.8rem;
-  min-width: 160px;
+
+.upcoming-exhibit-row {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  grid-template-areas: "date title arrow" "date desc arrow";
+  column-gap: 24px;
+  row-gap: 8px;
+  align-items: center;
+  padding: 28px 24px;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-terracotta);
+  transition: background-color 0.25s var(--ease);
 }
-.exhibit-mini-list a {
-  font-size: 1.05rem;
-  transition: color 0.2s var(--ease);
+.upcoming-exhibit-row:hover,
+.upcoming-exhibit-row:focus-visible {
+  background-color: var(--color-surface);
 }
-.exhibit-mini-list a:hover {
-  color: var(--color-text-dim);
+.upcoming-exhibit-date {
+  grid-area: date;
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+}
+.upcoming-exhibit-title {
+  grid-area: title;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.upcoming-exhibit-desc {
+  grid-area: desc;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  max-width: 56ch;
+}
+.upcoming-exhibit-row .text-link {
+  grid-area: arrow;
+  border: none;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 720px) {
+  .upcoming-exhibit-row {
+    grid-template-columns: 1fr;
+    grid-template-areas: "date" "title" "desc" "arrow";
+    row-gap: 10px;
+  }
 }
 
 /* ---- Virtual tour: drag-to-scroll carousel ---- */
@@ -237,12 +392,18 @@
   scrollbar-width: none;
   cursor: grab;
   user-select: none;
+  scroll-snap-type: x mandatory;
 }
 .tour-track::-webkit-scrollbar {
   display: none;
 }
 .tour-track.is-dragging {
   cursor: grabbing;
+  scroll-snap-type: none;
+}
+.tour-track:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: -2px;
 }
 
 .tour-card {
@@ -251,10 +412,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  scroll-snap-align: start;
 }
 .tour-card-end {
   width: 1px;
   flex: 0 0 1px;
+  scroll-snap-align: none;
 }
 
 .tour-figure {
@@ -267,8 +430,56 @@
   font-size: 1.1rem;
 }
 .tour-card-tag {
-  color: var(--color-text-faint);
-  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.tour-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.tour-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+.tour-nav-btn:hover:not(:disabled),
+.tour-nav-btn:focus-visible {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+.tour-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.tour-progress {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  min-width: 3.5em;
+}
+
+@media (max-width: 600px) {
+  .tour-card {
+    width: 84vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-track {
+    scroll-behavior: auto;
+  }
 }
 
 /* ---- Lecture table ---- */
@@ -278,38 +489,90 @@
   border-collapse: collapse;
   margin-bottom: 40px;
 }
-.lecture-table tr {
-  border-bottom: 1px solid var(--color-border);
-  cursor: pointer;
-  transition: background-color 0.2s var(--ease);
+.lecture-table thead th {
+  text-align: left;
+  padding: 0 12px 16px;
+  border-bottom: 1px solid var(--color-border-strong);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  font-weight: 400;
 }
-.lecture-table tr:hover {
-  background-color: rgba(255, 255, 255, 0.03);
+.lecture-table thead th:last-child {
+  text-align: right;
+}
+/* Rows are plain data, not links — no pointer cursor or hover affordance */
+.lecture-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
 }
 .lecture-table td {
-  padding: 22px 12px;
+  padding: 20px 12px;
   vertical-align: top;
 }
 .lecture-table td:first-child {
-  color: var(--color-text-faint);
+  color: var(--color-text-secondary);
   font-size: 0.8rem;
   white-space: nowrap;
-  width: 140px;
+  width: 120px;
 }
 .lecture-speaker {
-  display: block;
-  color: var(--color-text-faint);
-  font-size: 0.82rem;
-  margin-top: 6px;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
 }
 .lecture-tag {
-  text-align: right;
-  font-size: 0.72rem;
-  color: var(--color-text-dim);
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }
 .lecture-tag-full {
-  color: var(--color-text-faint);
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+.lecture-table td:last-child {
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .lecture-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .lecture-table,
+  .lecture-table tbody,
+  .lecture-table tr,
+  .lecture-table td {
+    display: block;
+    width: auto;
+  }
+  .lecture-table tr {
+    padding: 18px 0;
+  }
+  .lecture-table td {
+    padding: 4px 0;
+    white-space: normal;
+  }
+  .lecture-table td:last-child {
+    text-align: left;
+    margin-top: 6px;
+  }
+  .lecture-table td::before {
+    content: attr(data-label);
+    display: inline-block;
+    min-width: 80px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    vertical-align: top;
+  }
 }
 
 @media (max-width: 900px) {
@@ -340,16 +603,69 @@
 }
 
 @media (max-width: 560px) {
-  .hero {
-    height: 92vh;
-    min-height: 560px;
-  }
-  .exhibit-mini-list li {
-    flex-direction: column;
-    gap: 8px;
-  }
   .featured-meta {
     flex-direction: column;
     gap: 16px;
+  }
+}
+
+/* ---- Philosophy section ---- */
+
+.philosophy-section {
+  padding-bottom: 160px;
+}
+
+.philosophy-head {
+  max-width: 68ch;
+  margin-bottom: 64px;
+}
+.philosophy-head .eyebrow {
+  display: block;
+  margin-bottom: 16px;
+}
+.philosophy-head .section-title {
+  margin-bottom: 24px;
+}
+.philosophy-head p {
+  color: var(--color-text-secondary);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 48px;
+}
+
+.philosophy-num {
+  display: block;
+  color: var(--color-gold);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.philosophy-item h3 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.philosophy-item p {
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .philosophy-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px;
+  }
+}
+@media (max-width: 480px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
   }
 }

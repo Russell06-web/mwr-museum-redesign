@@ -2,7 +2,33 @@ window.I18N = {
   zh: {
     "a11y.skip": "跳至主要內容",
     "brand.sub": "世界宗教博物館",
+    "brand.aria": "世界宗教博物館首頁",
+    "lang.toEnglish": "切換為英文",
+    "lang.toChinese": "切換為中文",
     "nav.close": "關閉",
+    "nav.dialogLabel": "主要導覽選單",
+    "primarynav.visit": "參觀資訊",
+    "primarynav.exhibitions": "展覽活動",
+    "primarynav.collection": "館藏探索",
+    "primarynav.about": "關於宗博館",
+    "title.index": "MWR 世界宗教博物館｜探索生命與信仰的邊界",
+    "desc.index": "世界宗教博物館——橫跨十二個世界宗教的沉浸式展示空間，探索人類最偉大信仰傳統的旅程。",
+    "title.exhibitions": "展覽｜MWR 世界宗教博物館",
+    "desc.exhibitions": "世界宗教博物館當期展覽、即將開展與歷年展覽一覽。",
+    "title.collection": "館藏｜MWR 世界宗教博物館",
+    "desc.collection": "世界宗教博物館館藏瀏覽——橫跨十二個宗教傳統的文物典藏。",
+    "title.about": "關於我們｜MWR 世界宗教博物館",
+    "desc.about": "世界宗教博物館的理念、歷史與團隊——一座致力於跨信仰理解與教育的文化機構。",
+    "title.visitHours": "開放時間｜參觀｜MWR 世界宗教博物館",
+    "desc.visitHours": "世界宗教博物館各日開放時間、最後入館時間與館內設施營業時間。",
+    "title.visitTickets": "票價資訊｜參觀｜MWR 世界宗教博物館",
+    "desc.visitTickets": "世界宗教博物館一般票價、組合票與導覽服務費用。",
+    "title.visitTransport": "交通指引｜參觀｜MWR 世界宗教博物館",
+    "desc.visitTransport": "世界宗教博物館館址、捷運、公車、計程車與停車資訊。",
+    "title.visitAccessibility": "無障礙服務｜參觀｜MWR 世界宗教博物館",
+    "desc.visitAccessibility": "世界宗教博物館行動輔助、聽覺支援與視覺支援等無障礙服務。",
+    "title.visitGroup": "團體預約｜參觀｜MWR 世界宗教博物館",
+    "desc.visitGroup": "世界宗教博物館團體票價與團體預約洽詢資訊。",
     "nav.menu": "選單",
     "nav.link.visit": "參觀",
     "nav.link.exhibitions": "展覽",
@@ -10,7 +36,7 @@ window.I18N = {
     "nav.link.about": "關於",
     "nav.figcaption": "常設館藏．東廳",
     "nav.newsletter": "電子報",
-    "nav.visitinfo": "台灣．新北市永和區　·　週二至週日．09:00–18:00",
+    "nav.visitinfo": "台灣．新北市永和區　·　週二至週日．10:00–17:00，週一休館",
     "crumb.visit": "參觀",
     "crumb.exhibitions": "展覽",
     "crumb.collection": "館藏",
@@ -22,16 +48,34 @@ window.I18N = {
     "footer.careers": "人才招募",
     "footer.accessibility": "無障礙服務",
     "footer.newsletter": "電子報",
-    "footer.address": "234 新北市永和區<br />中山路 236 號",
+    "footer.address": "234 新北市永和區<br />中山路一段 236 號 7 樓",
+    "footer.disclaimer": "本網站為 UI/UX 概念設計作品，非世界宗教博物館官方網站。",
+    "misc.conceptOnly": "概念功能，尚未開放",
     "footer.copyright": "© 2026 世界宗教博物館 版權所有",
     "footer.legal": "隱私權政策　·　使用條款",
 
-    "home.hero.eyebrow": "台灣．新北　·　創立於 2001",
+    "home.hero.eyebrow": "台灣・新北　／　創立於 2001",
     "home.hero.title": "探索生命<br />與信仰的<br />邊界。",
-    "home.hero.lede": "一場記錄人類最偉大信仰傳統的旅程——橫跨十二個世界宗教，體驗 6,500 平方公尺的沉浸式展示空間。",
-    "home.hero.cta1": "規劃參觀行程",
-    "home.hero.cta2": "當期展覽　09:00–18:00",
+    "home.hero.lede": "一座從愛與和平出發，連結世界不同信仰與文化的博物館。",
+    "home.hero.statusOpenToday": "今日開館",
+    "home.hero.statusClosedToday": "今日休館",
+    "home.hero.statusHours": "10:00–17:00",
+    "home.hero.statusClosedNote": "週一休館",
+    "home.hero.cta1": "規劃參觀",
+    "home.hero.cta2": "瀏覽當期展覽",
+
+    "quickinfo.eyebrow": "參觀快速資訊",
+    "quickinfo.hours.label": "開放時間",
+    "quickinfo.hours.value": "週二至週日<br />10:00–17:00",
+    "quickinfo.closed.label": "休館日",
+    "quickinfo.closed.value": "每週一休館",
+    "quickinfo.transport.label": "交通位置",
+    "quickinfo.transport.value": "新北市永和區<br />中山路一段 236 號 7 樓",
+    "quickinfo.a11y.label": "無障礙服務",
+    "quickinfo.a11y.value": "無障礙參觀資訊與服務",
+
     "home.featured.eyebrow": "精選展覽",
+    "home.featured.tag": "現正展出",
     "home.featured.title": "馬雅神話<br />互動特展",
     "home.featured.desc": "踏入古馬雅文明的神聖宇宙觀——一個以星辰為經典的文明。互動裝置重現了古球場、卓爾金曆法，以及神話冥界西芭爾巴。",
     "home.featured.venueLabel": "展廳",
@@ -39,10 +83,13 @@ window.I18N = {
     "home.featured.typeLabel": "形式",
     "home.featured.typeValue": "互動／常設展",
     "home.featured.cta": "了解展覽 →",
-    "home.mini.sufi.date": "01.10 – 04.20.2026",
-    "home.mini.sufi": "蘇菲之道：聲音、靜默與臣服",
+
+    "home.upcoming.eyebrow": "即將開展",
+    "home.upcoming.title": "下一場<br />特展",
     "home.mini.ganges.date": "04.05 – 07.14.2027",
     "home.mini.ganges": "恆河：眾神與人民之河",
+    "home.mini.ganges.desc": "追溯 2,500 公里的神聖地理，恆河作為朝聖之路與活生生的神祇。",
+
     "home.tour.eyebrow": "虛擬體驗　·　拖曳瀏覽",
     "home.tour.title": "探索<br />虛擬導覽",
     "home.tour.viewall": "查看全部 →",
@@ -55,21 +102,43 @@ window.I18N = {
     "home.tour.ceremony.badge": "互動",
     "home.tour.quiet.title": "靜觀中庭",
     "home.tour.quiet.tag": "冥想空間",
+    "home.tour.carouselLabel": "虛擬導覽空間，可拖曳、以方向鍵或下方按鈕左右瀏覽",
+    "home.tour.prev": "上一個導覽空間",
+    "home.tour.next": "下一個導覽空間",
+    "home.tour.progressLabel": "導覽空間",
+
     "home.lectures.eyebrow": "學術活動",
     "home.lectures.title": "近期演講<br />與座談",
-    "home.lectures.viewall": "查看所有活動 →",
-    "home.l1.title": "當代世界中的神聖藝術與身份認同",
-    "home.l1.speaker": "陳欣怡 博士",
-    "home.l2.title": "蘇菲之道：音樂、虔敬與狂喜",
-    "home.l3.title": "佛教哲學與空性倫理",
-    "home.l4.title": "卡巴拉與靈魂的建築學",
-    "home.l5.title": "神道教儀式與神聖的生態學",
-    "home.l6.title": "印度教與宇宙時間：創世的循環",
-    "home.l7.title": "大地的福音：原住民靈性生態學",
-    "home.l7.speaker": "陳欣怡 博士",
+    "home.lectures.viewall": "查看所有活動",
+    "home.event1.title": "卡巴拉與靈魂的建築學",
+    "home.event1.speaker": "Dr. Sarah Goldstein",
+    "home.event2.title": "神道教儀式與神聖的生態學",
+    "home.event2.speaker": "Dr. Meera Kapoor",
+    "home.event3.title": "印度教與宇宙時間：創世的循環",
+    "home.event3.speaker": "Rev. Thomas Kuang",
+    "home.event4.title": "大地的福音：原住民靈性生態學",
+    "home.event4.speaker": "陳欣怡 博士",
     "home.tag.open": "報名中",
+    "home.tag.soon": "即將開始",
     "home.tag.full": "已額滿",
-    "home.lectures.viewall2": "查看所有活動與座談 →",
+    "home.tag.ended": "已結束",
+    "home.events.col.date": "日期",
+    "home.events.col.event": "活動名稱",
+    "home.events.col.speaker": "講者",
+    "home.events.col.status": "狀態",
+    "home.events.caption": "近期演講與座談",
+
+    "philosophy.eyebrow": "博物館理念",
+    "philosophy.title": "愛與和平的<br />信仰對話",
+    "philosophy.body": "世界宗教博物館相信，每一種信仰傳統都是人類追尋生命意義的獨特路徑。我們以愛與和平為起點，搭建理解的橋樑，讓不同文化與信仰得以在此對話、共學。",
+    "philosophy.love.title": "愛",
+    "philosophy.love.desc": "以同理心看待每一種信仰實踐，理解其背後對生命的關懷。",
+    "philosophy.peace.title": "和平",
+    "philosophy.peace.desc": "透過認識差異，減少誤解與衝突，促進跨文化的和諧共處。",
+    "philosophy.diversity.title": "多元文化",
+    "philosophy.diversity.desc": "呈現十二個世界宗教的獨特樣貌，尊重每一個傳統的完整性。",
+    "philosophy.dialogue.title": "世界信仰交流",
+    "philosophy.dialogue.desc": "邀請學者、信仰社群與參觀者共同參與，持續對話與學習。",
 
     "exh.title": "展覽",
     "exh.tab.current": "當期展覽",
@@ -80,7 +149,7 @@ window.I18N = {
     "exh.maya.desc": "踏入古馬雅文明的神聖宇宙觀——一個以星辰為經典的文明。互動裝置重現了古球場、卓爾金曆法，以及神話冥界西芭爾巴。",
     "exh.maya.venue": "南翼．第 12–16 展廳　·　互動／常設展",
     "exh.cta.tickets": "購票入場",
-    "exh.sufi.status": "2026 ／ 當期",
+    "exh.sufi.status": "2026 ／ 已結束",
     "exh.sufi.title": "蘇菲之道：聲音、靜默與臣服",
     "exh.sufi.desc": "一場深入伊斯蘭神秘主義的沉浸之旅——透過音樂、書法與神聖空間的幾何美學，探索自我與神聖之間的距離。",
     "exh.sufi.venue": "東翼．第 4–7 展廳",
@@ -148,7 +217,7 @@ window.I18N = {
     "about.contact.eyebrow": "聯絡我們",
     "about.contact.title": "館址與<br />聯絡資訊",
     "about.contact.addrlabel": "館址",
-    "about.contact.addrvalue": "234 新北市永和區中山路 236 號",
+    "about.contact.addrvalue": "234 新北市永和區中山路一段 236 號 7 樓",
     "about.contact.phonelabel": "電話",
     "about.contact.emaillabel": "一般諮詢",
     "about.contact.hourslabel": "開放時間",
@@ -165,7 +234,6 @@ window.I18N = {
     "visit.hours.mon": "星期一", "visit.hours.tue": "星期二", "visit.hours.wed": "星期三",
     "visit.hours.thu": "星期四", "visit.hours.fri": "星期五", "visit.hours.sat": "星期六", "visit.hours.sun": "星期日",
     "visit.hours.closed": "休館",
-    "visit.hours.extended": "延長開館",
     "visit.hours.lastentry.label": "最後入館",
     "visit.hours.lastentry.value": "閉館前 60 分鐘",
     "visit.hours.cafe.label": "館內咖啡廳",
@@ -242,7 +310,33 @@ window.I18N = {
   en: {
     "a11y.skip": "Skip to main content",
     "brand.sub": "Museum of World Religions",
+    "brand.aria": "Museum of World Religions — Home",
+    "lang.toEnglish": "Switch to English",
+    "lang.toChinese": "Switch to Chinese",
     "nav.close": "Close",
+    "nav.dialogLabel": "Main navigation menu",
+    "primarynav.visit": "Visit Info",
+    "primarynav.exhibitions": "Exhibitions",
+    "primarynav.collection": "Collection",
+    "primarynav.about": "About the Museum",
+    "title.index": "MWR Museum of World Religions | Exploring the Boundaries of Life and Faith",
+    "desc.index": "Museum of World Religions — an immersive exhibition space spanning twelve world religions, a journey through humanity's greatest traditions of faith.",
+    "title.exhibitions": "Exhibitions | MWR Museum of World Religions",
+    "desc.exhibitions": "Current, upcoming, and past exhibitions at the Museum of World Religions.",
+    "title.collection": "Collection | MWR Museum of World Religions",
+    "desc.collection": "Browse the Museum of World Religions collection — artifacts spanning twelve religious traditions.",
+    "title.about": "About Us | MWR Museum of World Religions",
+    "desc.about": "The philosophy, history, and team of the Museum of World Religions — a cultural institution dedicated to interfaith understanding and education.",
+    "title.visitHours": "Opening Hours | Visit | MWR Museum of World Religions",
+    "desc.visitHours": "Daily opening hours, last entry time, and on-site facility hours at the Museum of World Religions.",
+    "title.visitTickets": "Tickets & Pricing | Visit | MWR Museum of World Religions",
+    "desc.visitTickets": "General admission, combination tickets, and guided tour pricing at the Museum of World Religions.",
+    "title.visitTransport": "Directions | Visit | MWR Museum of World Religions",
+    "desc.visitTransport": "Address, MRT, bus, taxi, and parking information for the Museum of World Religions.",
+    "title.visitAccessibility": "Accessibility | Visit | MWR Museum of World Religions",
+    "desc.visitAccessibility": "Mobility, hearing, and visual accessibility services at the Museum of World Religions.",
+    "title.visitGroup": "Group Bookings | Visit | MWR Museum of World Religions",
+    "desc.visitGroup": "Group ticket pricing and booking inquiries for the Museum of World Religions.",
     "nav.menu": "Menu",
     "nav.link.visit": "Visit",
     "nav.link.exhibitions": "Exhibitions",
@@ -250,7 +344,7 @@ window.I18N = {
     "nav.link.about": "About",
     "nav.figcaption": "Permanent Collection · East Hall",
     "nav.newsletter": "Newsletter",
-    "nav.visitinfo": "Taiwan · Yonghe, New Taipei · Tue–Sun · 09:00–18:00",
+    "nav.visitinfo": "Taiwan · Yonghe, New Taipei · Tue–Sun, 10:00–17:00 · Closed Mondays",
     "crumb.visit": "Visit",
     "crumb.exhibitions": "Exhibitions",
     "crumb.collection": "Collection",
@@ -262,16 +356,34 @@ window.I18N = {
     "footer.careers": "Careers",
     "footer.accessibility": "Accessibility",
     "footer.newsletter": "Newsletter",
-    "footer.address": "236 Zhongshan Rd.<br />Yonghe Dist., New Taipei 234",
+    "footer.address": "7F., No. 236, Sec. 1, Zhongshan Rd.,<br />Yonghe Dist., New Taipei City 234, Taiwan",
+    "footer.disclaimer": "This website is an independent UI/UX concept project and is not the official website of the Museum of World Religions.",
+    "misc.conceptOnly": "Concept feature, not yet available",
     "footer.copyright": "© 2026 Museum of World Religions. All rights reserved.",
     "footer.legal": "Privacy Policy　·　Terms of Use",
 
-    "home.hero.eyebrow": "Taiwan · New Taipei · Founded 2001",
+    "home.hero.eyebrow": "Taiwan · New Taipei / Founded 2001",
     "home.hero.title": "Exploring the<br />Boundaries of<br />Life and Faith.",
-    "home.hero.lede": "A journey through humanity's greatest traditions of faith — spanning twelve world religions across 6,500 square meters of immersive exhibition space.",
+    "home.hero.lede": "A museum rooted in love and peace, connecting the world's diverse faiths and cultures.",
+    "home.hero.statusOpenToday": "Open Today",
+    "home.hero.statusClosedToday": "Closed Today",
+    "home.hero.statusHours": "10:00–17:00",
+    "home.hero.statusClosedNote": "Closed Mondays",
     "home.hero.cta1": "Plan Your Visit",
-    "home.hero.cta2": "Current Exhibitions · 09:00–18:00",
+    "home.hero.cta2": "Browse Current Exhibitions",
+
+    "quickinfo.eyebrow": "Plan Your Visit",
+    "quickinfo.hours.label": "Opening Hours",
+    "quickinfo.hours.value": "Tue–Sun<br />10:00–17:00",
+    "quickinfo.closed.label": "Closed",
+    "quickinfo.closed.value": "Every Monday",
+    "quickinfo.transport.label": "Location",
+    "quickinfo.transport.value": "7F., No. 236, Sec. 1,<br />Zhongshan Rd., Yonghe Dist.",
+    "quickinfo.a11y.label": "Accessibility",
+    "quickinfo.a11y.value": "Access info and visitor services",
+
     "home.featured.eyebrow": "Featured Exhibition",
+    "home.featured.tag": "On View",
     "home.featured.title": "Maya Mythology<br />Interactive Exhibit",
     "home.featured.desc": "Step into the sacred cosmology of the ancient Maya — a civilization whose calendar was written in the stars. Interactive installations recreate the ballcourt, the Tzolk'in calendar, and the mythic underworld of Xibalba.",
     "home.featured.venueLabel": "Gallery",
@@ -279,10 +391,13 @@ window.I18N = {
     "home.featured.typeLabel": "Format",
     "home.featured.typeValue": "Interactive / Permanent",
     "home.featured.cta": "Learn More →",
-    "home.mini.sufi.date": "01.10 – 04.20.2026",
-    "home.mini.sufi": "The Sufi Path: Sound, Silence, and Surrender",
+
+    "home.upcoming.eyebrow": "Upcoming",
+    "home.upcoming.title": "Next<br />Exhibition",
     "home.mini.ganges.date": "04.05 – 07.14.2027",
     "home.mini.ganges": "The Ganges: River of Gods and People",
+    "home.mini.ganges.desc": "Tracing 2,500 kilometers of sacred geography — the Ganges as pilgrimage route and living deity.",
+
     "home.tour.eyebrow": "Virtual Experience · Drag to Explore",
     "home.tour.title": "Explore the<br />Virtual Tour",
     "home.tour.viewall": "View All →",
@@ -295,21 +410,43 @@ window.I18N = {
     "home.tour.ceremony.badge": "Interactive",
     "home.tour.quiet.title": "Courtyard of Stillness",
     "home.tour.quiet.tag": "Meditation Space",
+    "home.tour.carouselLabel": "Virtual tour spaces — drag, use arrow keys, or the buttons below to browse",
+    "home.tour.prev": "Previous tour space",
+    "home.tour.next": "Next tour space",
+    "home.tour.progressLabel": "Tour space",
+
     "home.lectures.eyebrow": "Public Programs",
     "home.lectures.title": "Upcoming Talks<br />and Symposia",
-    "home.lectures.viewall": "View All Events →",
-    "home.l1.title": "Sacred Art and Identity in the Contemporary World",
-    "home.l1.speaker": "Dr. Chen Hsin-Yi",
-    "home.l2.title": "The Sufi Path: Music, Devotion, and Ecstasy",
-    "home.l3.title": "Buddhist Philosophy and the Ethics of Emptiness",
-    "home.l4.title": "Kabbalah and the Architecture of the Soul",
-    "home.l5.title": "Shinto Ritual and Sacred Ecology",
-    "home.l6.title": "Hinduism and Cosmic Time: Cycles of Creation",
-    "home.l7.title": "Gospel of the Earth: Indigenous Spiritual Ecology",
-    "home.l7.speaker": "Dr. Chen Hsin-Yi",
+    "home.lectures.viewall": "View All Events",
+    "home.event1.title": "Kabbalah and the Architecture of the Soul",
+    "home.event1.speaker": "Dr. Sarah Goldstein",
+    "home.event2.title": "Shinto Ritual and Sacred Ecology",
+    "home.event2.speaker": "Dr. Meera Kapoor",
+    "home.event3.title": "Hinduism and Cosmic Time: Cycles of Creation",
+    "home.event3.speaker": "Rev. Thomas Kuang",
+    "home.event4.title": "Gospel of the Earth: Indigenous Spiritual Ecology",
+    "home.event4.speaker": "Dr. Chen Hsin-Yi",
     "home.tag.open": "Registration Open",
+    "home.tag.soon": "Starting Soon",
     "home.tag.full": "Full",
-    "home.lectures.viewall2": "View All Talks and Symposia →",
+    "home.tag.ended": "Ended",
+    "home.events.col.date": "Date",
+    "home.events.col.event": "Event",
+    "home.events.col.speaker": "Speaker",
+    "home.events.col.status": "Status",
+    "home.events.caption": "Recent talks and symposia",
+
+    "philosophy.eyebrow": "Our Philosophy",
+    "philosophy.title": "A Dialogue of<br />Love and Peace",
+    "philosophy.body": "The Museum of World Religions believes every tradition of faith is a unique path in humanity's search for meaning. Rooted in love and peace, we build bridges of understanding where different cultures and beliefs can meet, converse, and learn together.",
+    "philosophy.love.title": "Love",
+    "philosophy.love.desc": "Approaching every faith practice with empathy for the care it holds for life.",
+    "philosophy.peace.title": "Peace",
+    "philosophy.peace.desc": "Reducing misunderstanding and conflict by fostering cross-cultural understanding.",
+    "philosophy.diversity.title": "Multiculturalism",
+    "philosophy.diversity.desc": "Presenting the distinct character of twelve world religions, each honored in full.",
+    "philosophy.dialogue.title": "Interfaith Exchange",
+    "philosophy.dialogue.desc": "Inviting scholars, faith communities, and visitors into ongoing dialogue and learning.",
 
     "exh.title": "Exhibitions",
     "exh.tab.current": "Current",
@@ -320,7 +457,7 @@ window.I18N = {
     "exh.maya.desc": "Step into the sacred cosmology of the ancient Maya — a civilization whose calendar was written in the stars. Interactive installations recreate the ballcourt, the Tzolk'in calendar, and the mythic underworld of Xibalba.",
     "exh.maya.venue": "South Wing · Galleries 12–16 · Interactive / Permanent",
     "exh.cta.tickets": "Book Tickets",
-    "exh.sufi.status": "2026 / Current",
+    "exh.sufi.status": "2026 / Ended",
     "exh.sufi.title": "The Sufi Path: Sound, Silence, and Surrender",
     "exh.sufi.desc": "An immersive journey into Islamic mysticism — exploring the distance between self and the sacred through music, calligraphy, and the geometry of sacred space.",
     "exh.sufi.venue": "East Wing · Galleries 4–7",
@@ -388,7 +525,7 @@ window.I18N = {
     "about.contact.eyebrow": "Contact Us",
     "about.contact.title": "Location and<br />Contact Info",
     "about.contact.addrlabel": "Address",
-    "about.contact.addrvalue": "236 Zhongshan Rd., Yonghe Dist., New Taipei 234",
+    "about.contact.addrvalue": "7F., No. 236, Sec. 1, Zhongshan Rd., Yonghe Dist., New Taipei City 234, Taiwan",
     "about.contact.phonelabel": "Phone",
     "about.contact.emaillabel": "General Inquiries",
     "about.contact.hourslabel": "Opening Hours",
@@ -405,7 +542,6 @@ window.I18N = {
     "visit.hours.mon": "Monday", "visit.hours.tue": "Tuesday", "visit.hours.wed": "Wednesday",
     "visit.hours.thu": "Thursday", "visit.hours.fri": "Friday", "visit.hours.sat": "Saturday", "visit.hours.sun": "Sunday",
     "visit.hours.closed": "Closed",
-    "visit.hours.extended": "Extended Hours",
     "visit.hours.lastentry.label": "Last Entry",
     "visit.hours.lastentry.value": "60 minutes before closing",
     "visit.hours.cafe.label": "Museum Café",
@@ -481,13 +617,48 @@ window.I18N = {
   }
 };
 
+function updateDocumentLanguage(lang) {
+  document.documentElement.setAttribute("lang", lang === "en" ? "en" : "zh-Hant");
+}
+
 window.applyTranslations = function (lang) {
   var dict = window.I18N[lang] || window.I18N.zh;
+
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     var key = el.getAttribute("data-i18n");
     if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
-  document.documentElement.lang = lang === "en" ? "en" : "zh-Hant";
+
+  document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+    var key = el.getAttribute("data-i18n-aria");
+    if (dict[key] !== undefined) el.setAttribute("aria-label", dict[key]);
+  });
+
+  document.querySelectorAll("[data-i18n-title]").forEach(function (el) {
+    var key = el.getAttribute("data-i18n-title");
+    if (dict[key] !== undefined) el.setAttribute("title", dict[key]);
+  });
+
+  // data-label drives the mobile responsive-table ::before pseudo-labels
+  // (see .lecture-table td::before in home.css) — without this, those
+  // labels would stay in whichever language they were hardcoded in and
+  // never switch when the visitor toggles languages.
+  document.querySelectorAll("[data-i18n-label]").forEach(function (el) {
+    var key = el.getAttribute("data-i18n-label");
+    if (dict[key] !== undefined) el.setAttribute("data-label", dict[key]);
+  });
+
+  updateDocumentLanguage(lang);
+
+  var titleKey = document.body.getAttribute("data-title-key");
+  if (titleKey && dict[titleKey] !== undefined) {
+    document.title = dict[titleKey];
+  }
+  var descKey = document.body.getAttribute("data-desc-key");
+  if (descKey && dict[descKey] !== undefined) {
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", dict[descKey]);
+  }
 };
 
 document.addEventListener("DOMContentLoaded", function () {
